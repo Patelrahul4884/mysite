@@ -1,0 +1,20 @@
+{% extends 'todo/base.html' %} {% block body %}<div class="row"></div> {% for todo in todos %}
+
+  <div class="col-sm-3">
+    <div class="card">
+      <center><h1>{{todo.title}}</h1></center>
+      <hr />
+      <h3>{{todo.text}}</h3>
+      <hr />
+      {{todo.created_at}}
+      <br />
+      <br />
+      <a href="{% url 'todo:update' todo.id %}"
+        ><i class="fa fa-pencil"></i>Edit</a
+      >
+      <a href="{% url 'todo:delete' todo.id %}"
+        ><i class="fa fa-trash"></i>Delete</a
+      >
+    </div>
+  </div>
+{% endfor%}</div> {% endblock %}

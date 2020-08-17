@@ -1,14 +1,102 @@
-<html lang="en">
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8" />
-    <title>TODO APP</title>
+    <meta charset="utf-8" />
+    <title>TODO App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
+      crossorigin="anonymous"
+    />
+
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/v4-shims.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--style-->
+    <style>
+      body {
+        background-color: #343a40;
+      }
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),
+          0 6px 20px 0 rgba(0, 0, 0, 0.39);
+        background: rgb(207, 202, 202);
+        margin-bottom: 5%;
+        border-radius: 20px;
+        padding: 2%;
+        overflow: auto;
+        resize: both;
+        text-overflow: ellipsis;
+      }
+      .card:hover {
+        background: rgb(160, 192, 204);
+      }
+
+      .submit_form {
+        text-align: center;
+        padding: 3%;
+        background: rgb(207, 202, 202);
+        border-radius: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4),
+          0 6px 20px 0 rgba(0, 0, 0, 0.36);
+      }
+    </style>
   </head>
-  <body>
-    <header>
-      <h1>TODO List</h1>
-      <hr />
-    </header>
-    <a href="/todo/add">Add Todo</a>
+  <body class="container-fluid">
+    <nav class="navbar navbar-default navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">TODO APP</a>
+        </div>
+        <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="{% url 'todo:add' %}">Add Todo</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     {% block body %} {% endblock %}
   </body>
 </html>

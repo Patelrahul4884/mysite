@@ -4,9 +4,9 @@ from .models import TodoItem
 
 
 def todoView(request):
-    todos = TodoItem.objects.all()
+    todos = TodoItem.objects.all().order_by('-created_at')
     ctx = {'todos': todos}
-    return render(request, 'todo/todo.html', ctx)
+    return render(request, 'todo/home.html', ctx)
 
 
 def detail(request, todo_id):
@@ -28,8 +28,19 @@ def add(request):
         return render(request, 'todo/add.html')
 
 
-class update():
-    pass
+def update(request, pk):
+    success_url = 'todo:all'
+    todo = TodoItem.objects.get(pk=pk)
+    if request.method == 'POST':
+        title = request.POST['title']
+        text = request.POST['text']
+        todo.title = title
+        todo.text = text
+        todo.save()
+        return redirect(success_url)
+    else:
+        return render(request,'todo/update.html',{'todo':todo})
+
 
 
 def delete(request, todo_id):
